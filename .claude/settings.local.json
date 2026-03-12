@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(echo \"=== AGENTS ===\" && ls \"/Users/keka/Desktop/MMPM Agent/.claude/agents/\" && echo \"\" && echo \"=== COMMANDS ===\" && ls \"/Users/keka/Desktop/MMPM Agent/.claude/commands/\" && echo \"\" && echo \"=== CONFIGS ===\" && find \"/Users/keka/Desktop/MMPM Agent/configs\" -type f && echo \"\" && echo \"=== MEMORY ===\" && ls -R \"/Users/keka/Desktop/MMPM Agent/memory/\" && echo \"\" && echo \"=== TOP LEVEL ===\" && ls \"/Users/keka/Desktop/MMPM Agent/\"*.md)"
+    ]
+  }
+}
