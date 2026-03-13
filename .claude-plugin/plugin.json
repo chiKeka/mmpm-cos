@@ -1,0 +1,21 @@
+{
+  "name": "mmpm-cognitive-os",
+  "version": "1.0.0",
+  "description": "Constitutional multi-agent decision architecture for major programme governance. 16 agents across 4 layers (Chair, Domain, Coupling, Adversarial) grounded in Oxford MMPM doctrine. Supports full governance deliberation, domain analysis, structured exploration, research guidance, and executive briefs.",
+  "author": {
+    "name": "Bruno Chikeka"
+  },
+  "repository": "https://github.com/chiKeka/mmpm-cos",
+  "license": "MIT",
+  "keywords": [
+    "programme-management",
+    "governance",
+    "multi-agent",
+    "decision-architecture",
+    "major-programmes",
+    "megaprojects",
+    "risk",
+    "stakeholder",
+    "oxford-mmpm"
+  ]
+}
