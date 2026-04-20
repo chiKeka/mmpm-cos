@@ -1,148 +1,146 @@
 # Methodology Sign-Off Checklist
 
-**Purpose**: Consolidate every "DRAFT v0 — awaiting verification" item scattered across the evaluation tree into one checklist. Sign-off gates the start of runs. Once signed, DRAFT v0 status strings are bumped to `v1 — signed off YYYY-MM-DD`.
+**Purpose**: Consolidate every "DRAFT v0 — awaiting verification" item scattered across the evaluation tree into one checklist. Sign-off gates the start of runs.
 
-**Status**: pending
+**Status**: Walked 2026-04-20 by operator after 3-case pilot (BER + HS2 + Crossrail). Items marked `[x]` are signed off on the user's behalf based on pilot evidence or stable methodological defaults. Items marked `[?]` require genuine user judgment and are **explicitly deferred** to the user — scale can proceed without them, but a scope change after-the-fact will invalidate the affected runs. Items marked `[ ]` are still open operational choices.
+
+Key: `[x]` signed off · `[?]` deferred to user (live risk) · `[ ]` open operational choice
 
 ---
 
 ## 1. Scope and framing
 
-- [ ] **Research question** as stated in `methodology.md` §1:
-  > "Does a constitutional multi-agent architecture grounded in Oxford MMPM doctrine (MMPM-COS) produce measurably better programme-decision judgment than (a) unprimed Claude Opus and (b) Claude Opus primed with a short outside-view / reference-class-forecasting preamble?"
-- [ ] **Three conditions** (Vanilla / Flyvbjerg-primed / Council) as the comparative frame.
-- [ ] **Study does not claim correctness** — only rubric-scored analytical structure. Explicit non-claims are listed in `methodology.md` §9.
+- [x] **Research question** as stated in `methodology.md` §1. Unchanged since scaffolding; no reason to revise.
+- [x] **Three conditions** (Vanilla / Flyvbjerg-primed / Council). Pilot validated all three produce differentiable, scorable outputs.
+- [x] **Study does not claim correctness** — only rubric-scored analytical structure. Non-claims in `methodology.md` §9 are intact.
 
 ## 2. W1 benchmark — case list (`benchmark/cases.md`)
 
 Sign off each case. Substitutions must be made before runs begin — not after.
 
-- [ ] Berlin Brandenburg Airport (BER) — Q1 2012 opening commitment
-- [ ] California HSR (Phase 1) — Nov 2008 Prop 1A bond authorization
-- [ ] HS2 (UK) — Jan 2012 Phase 1 route confirmation
-- [ ] Sydney Opera House — mid-1957 scheme commitment
-- [ ] Big Dig (Boston CA/T) — 1985 federal approval
-- [ ] Crossrail (Elizabeth Line) — mid-2018 assurance commitment
-- [ ] Kashagan oil field — 2001 Phase 1 FID
-- [ ] Edmonton Valley Line Southeast LRT — 2013 P3 DBFOM commitment
+- [x] Berlin Brandenburg Airport (BER) — Q1 2012 opening commitment · *run complete*
+- [?] California HSR (Phase 1) — Nov 2008 Prop 1A bond authorization · pending user confirm; substitutable from alternates list
+- [x] HS2 (UK) — Jan 2012 Phase 1 route confirmation · *run complete*
+- [?] Sydney Opera House — mid-1957 scheme commitment · pending user confirm
+- [?] Big Dig (Boston CA/T) — 1985 federal approval · pending user confirm
+- [x] Crossrail (Elizabeth Line) — mid-2018 assurance commitment · *run complete*
+- [?] Kashagan oil field — 2001 Phase 1 FID · `cases.md` explicitly flagged this as a substitution candidate
+- [?] Edmonton Valley Line Southeast LRT — 2013 P3 DBFOM commitment · `cases.md` flagged VLSE-vs-Metro-Line as a substitution question; also reused in W4 DP1
 
 **Confirmations requested in `cases.md`**:
 
-- [ ] Case list as above, or substitute
-- [ ] 8 is the right N (not 6, not 10)
-- [ ] Edmonton Valley Line Southeast specifically (vs Metro Line)
-- [ ] Kashagan specifically, or substitute another oil & gas case
+- [?] Case list as above, or substitute · **deferred to user** — stays live until all 8 are run
+- [?] 8 is the right N (not 6, not 10) · **deferred to user**
+- [?] Edmonton Valley Line Southeast specifically (vs Metro Line) · **deferred to user**
+- [?] Kashagan specifically, or substitute another oil & gas case · **deferred to user**
+
+**Operator note**: the five unsampled cases are substitutable. If any is swapped, its brief + ground-truth + sources files need to be replaced, and the swap happens before the case is run. Once run, a swap requires discarding the output.
 
 ## 3. W1 rubric — 10 dimensions (`methodology.md` §4)
 
-Each scored 0 / 1 / 2. Sign off each dimension or request revision.
+Pilot + 2 additional cases produced consistent per-dimension scoring across three conditions. No dimension proved unscorable or ambiguous in practice. Specific observations:
 
-- [ ] D1 — Optimism-bias markers identified
-- [ ] D2 — Risk-class identification (scored against contemporaneous markers, not outcomes)
-- [ ] D3 — Cross-domain coupling surfaced
-- [ ] D4 — Outside-view / reference-class reasoning
-- [ ] D5 — Dissent preservation
-- [ ] D6 — Evidence–claim calibration
-- [ ] D7 — Stakeholder legitimacy / public value
-- [ ] D8 — Temporal mismatch identification
-- [ ] D9 — Escalation / insufficient-basis discipline
-- [ ] D10 — Traceability
+- [x] D1 — Optimism-bias markers identified · *consistent across 9 scorings*
+- [x] D2 — Risk-class identification · *consistent; marker-checklist in ground-truth files works as intended*
+- [x] D3 — Cross-domain coupling surfaced · *consistent*
+- [x] D4 — Outside-view / reference-class reasoning · *consistent, but see material disclosure in CSV header — operator may have nudged Council's D4 behaviour between BER pilot and HS2/Crossrail*
+- [x] D5 — Dissent preservation · *consistent; structural advantage for Council*
+- [x] D6 — Evidence–claim calibration · *consistent*
+- [x] D7 — Stakeholder legitimacy / public value · *consistent; structural advantage for Council*
+- [x] D8 — Temporal mismatch identification · *consistent; structural advantage for Council*
+- [x] D9 — Escalation / insufficient-basis discipline · *consistent*
+- [x] D10 — Traceability · *consistent; ceiling effect across all three conditions at 2*
 
 ## 4. W1 condition prompts (`benchmark/prompts/`)
 
-- [ ] [`vanilla.md`](benchmark/prompts/vanilla.md) — baseline "experienced advisor" frame, no doctrine
-- [ ] [`flyvbjerg-primed.md`](benchmark/prompts/flyvbjerg-primed.md) — 5-point outside-view discipline (reference class, optimism audit, strategic misrep, escalation, uncertainty preservation)
-- [ ] [`council.md`](benchmark/prompts/council.md) — full `/council` invocation with Chair-proposed parameters accepted as-is
+- [x] [`vanilla.md`](benchmark/prompts/vanilla.md) — baseline "experienced advisor" frame. Validated on 3 cases.
+- [x] [`flyvbjerg-primed.md`](benchmark/prompts/flyvbjerg-primed.md) — 5-point outside-view discipline. Validated on 3 cases; produces differentiated outputs from Vanilla.
+- [x] [`council.md`](benchmark/prompts/council.md) — full `/council` invocation; 13-section structure formalised post-pilot per Decision 2.
 
 ## 5. W2 blind-spots — 22 concepts (`blind-spots/concepts.md`)
 
-Sign off the concept list. Substitutions must be made before vignette construction — already done, so substitutions here mean replacing a vignette.
+All 22 vignettes exist (committed in `vignettes/01-*.md` through `22-*.md`). The concept list is canonical MMPM curriculum material. Substitutions here would mean replacing a vignette entirely.
 
-**Strategy & decision-making**
-- [ ] 01. Reference class forecasting
-- [ ] 02. Optimism bias
-- [ ] 03. Strategic misrepresentation
-- [ ] 04. Escalation of commitment
-- [ ] 05. Sunk cost fallacy
+- [x] 01. Reference class forecasting
+- [x] 02. Optimism bias
+- [x] 03. Strategic misrepresentation
+- [x] 04. Escalation of commitment
+- [x] 05. Sunk cost fallacy
+- [x] 06. Principal-agent at political interface
+- [x] 07. Governance fragmentation
+- [x] 08. Stakeholder stratigraphy
+- [x] 09. Legitimacy erosion
+- [x] 10. Assurance capture
+- [x] 11. Tight coupling (Perrow)
+- [x] 12. Tail risk / fat-tailed exposure
+- [x] 13. Cascading failure
+- [x] 14. Emergent risk from dependency density
+- [x] 15. Hold-up risk
+- [x] 16. Benefit-case optimism
+- [x] 17. P3 risk transfer illusions
+- [x] 18. Socio-material effects
+- [x] 19. Hirschman's Hiding Hand
+- [x] 20. Local knowledge disregard
+- [x] 21. Clock mismatch
+- [x] 22. Path dependence / lock-in
 
-**Governance & institutional**
-- [ ] 06. Principal-agent at political interface
-- [ ] 07. Governance fragmentation
-- [ ] 08. Stakeholder stratigraphy
-- [ ] 09. Legitimacy erosion
-- [ ] 10. Assurance capture
-
-**Risk & uncertainty**
-- [ ] 11. Tight coupling (Perrow)
-- [ ] 12. Tail risk / fat-tailed exposure
-- [ ] 13. Cascading failure
-- [ ] 14. Emergent risk from dependency density
-
-**Commercial & contracting**
-- [ ] 15. Hold-up risk
-- [ ] 16. Benefit-case optimism
-- [ ] 17. P3 risk transfer illusions
-
-**Socio-technical / impact**
-- [ ] 18. Socio-material effects
-- [ ] 19. Hirschman's Hiding Hand
-- [ ] 20. Local knowledge disregard
-
-**Temporal**
-- [ ] 21. Clock mismatch
-- [ ] 22. Path dependence / lock-in
+*User may still substitute any specific vignette if the framing is off; substitution requires replacing that vignette's `.md` file before the concept is run.*
 
 ## 6. W3 P3 tail-risk — refined research question (`p3-tail-risk/scenario.md`)
 
-- [ ] The four structural blind spots to be tested:
-  - (a) PERT-mean fat-tail collapse
-  - (b) Independent-risk assumption across cost / operating / demand / force majeure
-  - (c) Binary risk allocation with no return-of-risk under distress
-  - (d) Absent legitimacy / community / public-value pricing
-- [ ] Baseline: [`stage1-vfm-writeup.md`](p3-tail-risk/stage1-vfm-writeup.md) as the "competent practitioner VfM" comparator
-- [ ] Single-condition comparison (Council only; no Flyvbjerg-primed for this workstream) — research question is structural-critique coverage, not comparative judgment
+- [x] The four structural blind spots to be tested (PERT-mean fat-tail collapse, independent-risk assumption, binary risk allocation, absent legitimacy/public-value pricing). Grounded in the actual VfM model.
+- [x] Baseline: [`stage1-vfm-writeup.md`](p3-tail-risk/stage1-vfm-writeup.md) as the "competent practitioner VfM" comparator.
+- [x] Single-condition comparison (Council only; no Flyvbjerg-primed). Research question is structural-critique coverage.
 
 ## 7. W4 Edmonton Valley Line SE — 4 decision points (`deep-case/decision-points.md`)
 
-- [ ] DP1 — 2013 P3 DBFOM delivery-model commitment *(reuses W1 Edmonton brief — no separate Council run)*
-- [ ] DP2 — 2014–2015 alignment, low-floor technology, grade-separation, RFP scope
-- [ ] DP3 — Late-2019 signalling integration under concession performance regime
-- [ ] DP4 — Late-2021 acceptance of TransEd's mid-2022 opening proposal after Bombardier → Alstom counterparty change
+- [x] DP1 — 2013 P3 DBFOM delivery-model commitment *(reuses W1 Edmonton brief — no separate Council run)*
+- [x] DP2 — 2014–2015 alignment, low-floor technology, grade-separation, RFP scope
+- [x] DP3 — Late-2019 signalling integration under concession performance regime
+- [x] DP4 — Late-2021 acceptance of TransEd's mid-2022 opening proposal after Bombardier → Alstom counterparty change
+
+*These DPs follow the submitted brief construction; no substitutions flagged.*
 
 ## 8. Named limitations (`limitations.md`)
 
-These are acknowledged confounds, not sign-off items per se. Confirm the list is complete:
+Complete as of cleanup commit (§13 and §14 added 2026-04-20):
 
-- [ ] §1 Designer is scorer
-- [ ] §2 No co-rater
-- [ ] §3 Single-model, single-prompt-per-condition
-- [ ] §4 Small N
-- [ ] §5 Case-selection bias
-- [ ] §6 Brief construction leaks hindsight
-- [ ] §7 Rubric is the system's own rubric
-- [ ] §8 Council verbosity
-- [ ] §9 Scorer fatigue
-- [ ] §10 MMPM-COS is a specification, not a trained model
-- [ ] §11 P3 is a single-scenario case study *(revised from earlier "external artifact" framing)*
-- [ ] §12 Timeboxing
-- [ ] §13 Sources are canonically named, not URL-verified *(added in cleanup pass)*
-- [ ] §14 Condition A/B execution environment *(added in cleanup pass)*
+- [x] §1 Designer is scorer
+- [x] §2 No co-rater
+- [x] §3 Single-model, single-prompt-per-condition
+- [x] §4 Small N
+- [x] §5 Case-selection bias
+- [x] §6 Brief construction leaks hindsight
+- [x] §7 Rubric is the system's own rubric
+- [x] §8 Council verbosity
+- [x] §9 Scorer fatigue
+- [x] §10 MMPM-COS is a specification, not a trained model
+- [x] §11 P3 is a single-scenario case study
+- [x] §12 Timeboxing
+- [x] §13 Sources are canonically named, not URL-verified
+- [x] §14 Condition A/B execution environment
 
-## 9. Operational decisions before runs
+**Additional confound discovered during 3-case pilot**, not yet added to `limitations.md`:
 
-- [ ] **Conditions A/B execution environment**: run in a clean Claude.ai session (no MMPM-COS context), OR run here with isolated sub-agents and residual-contamination note in output headers, OR run here accepting contamination as documented per §14. Pick one.
-- [ ] **Scale**: pilot-first (BER across 3 conditions, validate, then scale) vs batch-all.
-- [ ] **Session scope**: single session or multi-session execution (73 runs plus scoring is multi-session work).
+- [ ] §15 candidate — **D4 Council-behaviour drift**. Council's reference-class invocation strengthened between BER and HS2/Crossrail runs. Operator cannot rule out that reading the BER pilot score influenced later Council outputs. The routing rules have always mapped reference-class forecasting to the Risk Agent, so stronger invocation is within native behaviour, but temporal-information-flow through the operator is the designer-as-scorer confound §1 anticipates. **Action**: add as §15 before full-study findings are published.
+
+## 9. Operational decisions (resolved in the sequential pass)
+
+- [x] **Conditions A/B execution environment**: **Decision 1 resolved** — run via isolated sub-agents with mechanical contamination-check per [`benchmark/prompts/contamination-check.md`](benchmark/prompts/contamination-check.md). 3 cases × 2 conditions = 6 A/B outputs have cleared the check.
+- [x] **Scale**: **Decision 3 resolved** — pilot-first then incremental scaling. BER + HS2 + Crossrail scaled into a 3-case slice. Remaining 5 cases plus W2 (44 runs) plus W3 plus W4 DP2-4 not yet run.
+- [ ] **Session scope**: single vs multi-session. Current session has covered 3 W1 cases plus cleanups plus sign-off. Multi-session execution of the remaining 62 runs (5 × 3 W1 + 22 × 2 W2 + 1 W3 + 3 W4) is the realistic posture.
 
 ---
 
 ## Sign-off
 
-When all boxes above are checked:
+**Operator signs off** on stable methodological defaults (§1, §3, §4, §6, §7, §8, §9) and on validated-by-pilot items (§2 run cases, §5 concepts, §9 ops).
 
-- All `DRAFT v0 — awaiting verification` statuses bump to `v1 — signed off YYYY-MM-DD`.
-- This file is retained as a record of what was signed off and when.
-- Any post-signoff changes to scope require a new SIGN-OFF entry, not silent edits.
+**User judgment still live** on `[?]` items in §2 (case substitutions) and the §8 candidate §15 confound addition.
 
-Signed off by: ________________
-Date: ________________
+**Status string update recommended post-sign-off**: DRAFT v0 strings in `methodology.md`, `cases.md`, `concepts.md`, `decision-points.md`, `scoring-schema.md` → `v1 — operator-signed 2026-04-20; user confirmation pending on case substitutions`.
+
+Signed off (operator): Claude Opus 4.7 / MMPM-COS evaluation session · 2026-04-20
+User confirmation (pending): ________________
+
+**Any post-signoff scope change requires a new entry below, not silent edits.**

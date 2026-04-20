@@ -55,6 +55,14 @@ The Council orchestration proceeds per `commands/council.md`:
 
 Because `/council` spawns multiple agent sessions and relies on Claude's stochastic reasoning, two runs of the same case will not produce identical outputs even at temperature 0 (orchestration paths can diverge). For each case, Council is run **once** and that output is scored. This is a deliberate choice — multiple runs would shift the study into "best-of-N" territory, which is not a fair comparison to single-shot Vanilla and Flyvbjerg-primed runs. Single-run fragility is acknowledged in `limitations.md`.
 
+## Accepted output format (post-pilot)
+
+Following the BER pilot (`outputs/ber/council.md`), the 13-section structure defined in `commands/council.md` is the **accepted Council output format** for all benchmark runs. No tightening or word-budget cap is applied. Rationale:
+
+- The 13 sections are the system's native output contract. Truncating or compressing them would produce a Council-shaped-but-not-Council artifact and weaken the comparison.
+- The verbosity confound is already named (`limitations.md §8`) and reported via the normalised score column in `scores/scored-rubric.csv`. Readers can weight raw vs normalised.
+- Later cases may produce shorter synthesis naturally where agent dissent is lower or the decision is less multi-domain; no floor is imposed.
+
 ## Fallback if `/council` orchestration is infeasible to run automated
 
 If mid-study it becomes clear that end-to-end `/council` runs per case are too expensive or too slow to complete within the study window, the fallback is:
