@@ -6,6 +6,10 @@ MMPM-COS is a **governed deliberation engine** — not a project management tool
 
 ---
 
+**Empirical evaluation**: [`/evaluations/`](evaluations/) — four-workstream study testing whether Council deliberation surfaces risk dimensions that vanilla and Flyvbjerg-primed baselines miss, with pre-registered rubric and honest limitations. *Status: scaffolded; runs pending verification of methodology.*
+
+---
+
 ## Architecture
 
 ### 4-Layer Agent Model (16 Agents)
