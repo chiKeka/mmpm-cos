@@ -1,131 +1,82 @@
-# P3 Tail-Risk × Adversarial Layer — Scenario Design
+# P3 VfM × Adversarial Layer — Scenario Design
 
-**Status**: DRAFT v0 — interface-first design. Awaiting VFM model input (commit to repo, paste outputs, or describe structure).
+**Status**: DRAFT v1 — redesigned to reflect the actual VfM model artifact (`model/P3_VfM_Model_v2.0.xlsx`).
 
-## Research question
+## Research question (refined)
 
-When a Monte Carlo VFM model produces a distribution of cost/NPV outcomes for a P3 vs conventional delivery comparison, does the MMPM-COS adversarial layer (Contrarian, Red Team, Emergence & Fragility, Public Value) surface the tail risks that mean-variance DCF analysis systematically understates?
+A sophisticated, risk-quantified, sensitivity-aware VfM model — the kind a Canadian Treasury Board review would actually use — systematically:
 
-This is the distinctive workstream. It sits at the intersection of Flyvbjerg (infrastructure cost distributions are fat-tailed), Taleb (mean-variance analysis misreads fat-tail exposure), and human-AI decision-making (does multi-agent deliberation change how fat-tail risk is weighted?).
+- (a) collapses fat-tail risk exposure (P90s) into PERT means via `EV = prob × (P10 + 4·P50 + P90)/6`
+- (b) treats risks as independent (no joint-tail modelling across cost, operating, demand, and force majeure lines)
+- (c) binarizes risk allocation between PSC and P3 counterparties (0 / 50 / 100% retention, no return-of-risk under distress)
+- (d) prices no legitimacy, community, or public-value risk
 
-## Hypothesis
+Does MMPM-COS Council, presented with this model's scenario and outputs and a competent VfM writeup of the recommendation, surface these four structural blind spots?
 
-H1: Given the same Monte Carlo output distribution, a Council-reviewed decision brief surfaces materially more of the following than a standard VFM summary:
-- Fat-tail cost exposure (>P90)
-- Risk-transfer illusions (risks formally transferred to private partner but that return under distress)
-- Fragility-driving correlations (e.g., project-specific risk × systemic demand risk)
-- Legitimacy risks not priced in DCF (community impact, equity effects)
-- Path dependence (once P3 signed, exit costs shape future decisions)
+This is sharper than the original "Monte Carlo fat tails" framing because the model is not a Monte Carlo — it is a deterministic PERT-mean VfM comparison with one-way sensitivity analysis. The structural critiques above are specific and testable.
 
-## Study design
+## What the model actually is
 
-Single P3-vs-conventional scenario. Monte Carlo produces N simulated outcomes. Study proceeds in three stages:
+- 11 sheets: Cover, Quick_Start, Dashboard, Inputs_Master (82 rows), Delivery_Params, Risk_Register (10 risks), Calc_PSC, Calc_P3, VfM_Comparison, Sensitivity, Assumption_Log.
+- Example scenario: Alberta hospital, 3-year construction, 30-year operating period, $220M base construction ($180M building + $25M equipment + $15M design), DBFM structure compared against DBB / DB / CM PSC comparators.
+- Risks specified as probability × PERT(P10, P50, P90) per line. Correlations across risks: none modelled.
+- Risk transfer point-estimated per risk: PSC fully retains construction/operating risks; P3 fully retains design/commissioning/technology; demand, regulatory, and force majeure shared 50/50.
+- Sensitivity: one-way on discount rate (4% to 10%) and capital cost (-20% to +30%), plus a tornado diagram. No joint sensitivity.
+- Assumption Log cites Flyvbjerg (A14-A15 for cost overrun parameters) and market benchmarking studies (A13 for P3 capital efficiency) — the model is honest about its assumptions, which strengthens the fairness of the Council critique.
 
-### Stage 1 — Standard VFM write-up (baseline)
+The model has known calculation artifacts when opened in openpyxl data-only mode (several cells show `#NUM!` / `#N/A` because the Active PSC Method selector recomputes in Excel but not in openpyxl's cached values). This does not affect the structural analysis; numbers flowing into Council input are drawn from cells that are independently calculable (Risk Register EVs and derived totals).
 
-A conventional VFM comparison as a practitioner would produce: expected NPV under each delivery model, P50 / P90 cost, qualitative risk-transfer commentary, recommendation. Drawn from the model output without Council involvement.
+## Study design — three stages
 
-Length: ~1000 words. This is what a board would typically see.
+### Stage 1 — Practitioner VfM write-up (baseline)
 
-### Stage 2 — Monte Carlo output → Council input
+A competent ~1000-word VfM summary as would be presented to an Alberta Treasury Board review. Drawn from the model's own outputs and assumption log. Positive framing consistent with typical Treasury submissions: headline VfM number, risk transfer analysis, sensitivity test results, recommendation to proceed with P3.
 
-The Council receives a structured brief containing:
-- The scenario (scope, delivery model options, cost envelope)
-- The Monte Carlo output summary (distribution shape, P50/P90/P99, tail examples, correlation structure)
-- The Stage 1 VFM write-up for context
-- Question: "The board is deciding between P3 DBFOM and conventional D-B-B delivery. The VFM analysis above recommends P3. What is your analysis?"
+Artifact: `stage1-vfm-writeup.md`.
 
-Council runs the full orchestration.
+This is the baseline — the comparator that Council is measured against.
 
-### Stage 3 — Differential analysis
+### Stage 2 — Council input and run
 
-Compare what Council surfaces against the Stage 1 VFM write-up. Scored on seven dimensions:
+Council receives:
 
-| Dimension | What it tests |
-|-----------|---------------|
-| T1 — Tail framing | Does the output treat >P90 outcomes as material, not residual? |
-| T2 — Risk-transfer audit | Does the output question whether transferred risks stay transferred under distress? |
-| T3 — Correlation surfacing | Does the output identify correlated exposures that inflate joint tail? |
-| T4 — Legitimacy dimensions not in model | Does the output raise effects the Monte Carlo does not capture? |
-| T5 — Path dependence | Does the output surface exit-cost asymmetry? |
-| T6 — Insufficient-basis discipline | Does the output decline to endorse P3 if the evidence is mixed? |
-| T7 — Recommendation robustness | Is the recommendation framed as robust to tail realizations, or only to the mean? |
+1. The scenario description (hospital, delivery comparison, key assumptions).
+2. The risk register structure and outputs (probability, P10/P50/P90, EV, allocation).
+3. The model's Assumption_Log (so Council sees what is sourced and what is inferred).
+4. The Stage 1 write-up.
+5. The question: *"The Treasury Board is deciding whether to proceed with the P3 DBFM structure recommended by the Value for Money analysis above, or to use a conventional DB delivery. What is your analysis? What would you recommend, with what confidence, and why?"*
 
-Each scored 0/1/2, max 14.
+Full `/council` orchestration runs. Output is the Council's 13-section brief.
 
-## Interface to VFM model
+Artifacts: `data/scenario-brief.md` (Council input), `stage2-council-run.md` (Council output).
 
-The study does not need the full model, only the interface — what the model produces that becomes Council input.
+### Stage 3 — Differential scoring
 
-### Minimum viable input
+Score Stage 2 against the Stage 1 baseline on seven dimensions, each 0/1/2, max 14.
 
-If you commit the VFM model to `evaluations/p3-tail-risk/model/`, or paste outputs into `evaluations/p3-tail-risk/data/monte-carlo-output.md`, the study needs:
+| T | Dimension | What a 2 looks like |
+|---|-----------|---------------------|
+| T1 | PERT-mean fat-tail collapse | Council names that P90 exposures are aggregated into PERT means and the tail realization is not scoped |
+| T2 | Joint-tail / correlation surfacing | Council identifies that construction overrun, O&M variance, and force majeure are likely correlated under distress and the model treats them independently |
+| T3 | Risk-transfer realism under distress | Council interrogates whether formally transferred risks return to the sponsor under consortium insolvency, counterparty credit distress, or contract disputes |
+| T4 | Legitimacy / public-value dimensions not priced | Council raises community impact, distributional effects on service access, political legitimacy, or other dimensions the VfM does not price |
+| T5 | P3 capital-efficiency claim interrogation | Council questions the -7% capital efficiency assumption — its source, its realism, whether it reflects true efficiency or strategic misrepresentation in benchmarking studies |
+| T6 | Path dependence / exit asymmetry | Council identifies that signing a 33-year DBFM concession foreclosures realistic exit and reshapes all subsequent governance decisions |
+| T7 | Insufficient-basis discipline | Council qualifies, defers, or conditions its recommendation where the evidence is weak — does not rubber-stamp the VfM |
 
-1. **Scenario description** — scope, schedule envelope, capex envelope, opex envelope, delivery models compared.
-2. **Monte Carlo structure** — which variables are parameterized, which distributions, which correlations.
-3. **Output distribution** — either:
-   - (a) the full simulation output as CSV (N rows × variables), OR
-   - (b) summary statistics: mean, P10, P25, P50, P75, P90, P95, P99, max; plus tail exemplars (e.g., three worst realizations with scenario descriptions).
-4. **Recommendation produced by the model** — which delivery option dominates on expected NPV, and by how much.
-5. **What the model does NOT capture** — explicitly named (e.g., political risk, legitimacy, technology obsolescence).
-
-Item 5 is particularly important — it is the boundary of the DCF paradigm the Council is testing against.
-
-### Preferred format
-
-```
-evaluations/p3-tail-risk/
-├── model/                             # the VFM model itself, if committable
-│   └── {model files}
-├── data/
-│   ├── scenario.md                    # items 1, 2, 5 above
-│   ├── monte-carlo-output.csv         # item 3a
-│   └── monte-carlo-summary.md         # item 3b (if full CSV not feasible)
-├── stage1-vfm-writeup.md              # baseline
-├── stage2-council-run.md              # Council output
-├── stage3-scoring.md                  # T1-T7 scored
-└── findings.md                        # writeup
-```
-
-## What to paste if not committing the model
-
-If you paste summary rather than commit:
-
-```
-## Scenario
-{1-2 paragraphs describing the project and the two delivery options}
-
-## Monte Carlo structure
-- Variables parameterized: {list}
-- Distributions assumed: {list}
-- Correlations modeled: {list}
-- Number of simulations: {N}
-
-## Output summary (NPV, $M, P3 minus conventional; negative = P3 cheaper)
-- Mean: {value}
-- P10: {value}
-- P25: {value}
-- P50: {value}
-- P75: {value}
-- P90: {value}
-- P95: {value}
-- P99: {value}
-
-## Tail exemplars (worst 3 realizations)
-1. {description}
-2. {description}
-3. {description}
-
-## Model recommendation
-{one paragraph}
-
-## Known model limitations
-{bullets — what the model cannot price}
-```
+Scoring rationale captured in `stage3-scoring.md`.
 
 ## What this workstream does not claim
 
-- Not a claim that the specific P3 scenario generalizes.
-- Not a claim that Council-surfaced risks are *correct* — they may also be phantom risks.
-- Not a claim that mean-variance DCF is wrong; the claim is narrower — it systematically understates certain classes of exposure, and multi-agent deliberation surfaces some of them.
-- Not a claim that Council > human expert. The baseline is the VFM write-up, not a human reviewer.
+- Not a claim that the specific hospital scenario generalizes.
+- Not a claim the VfM model is wrong — the structural critique is that *any* PERT-mean VfM exhibits these blind spots, and the question is whether Council surfaces them.
+- Not a claim that Council-surfaced risks are correct — they may include phantom risks as well as genuine ones.
+- Not a claim about Council > human expert reviewer. The baseline is the Stage 1 VfM write-up, not a human reviewer.
+
+## What successful completion looks like
+
+- `data/scenario-brief.md` finalised and treated as the canonical Council input.
+- `stage1-vfm-writeup.md` finalised — competent practitioner-grade baseline.
+- Single Council run executed (temperature 0, one run, single-shot per the benchmark discipline — not best-of-N).
+- T1–T7 scored with one-sentence justifications each.
+- `findings.md` populated — where Council adds signal vs Stage 1, where it does not, and one paragraph explicitly asking whether the Council-surfaced risks are genuine or phantom.
