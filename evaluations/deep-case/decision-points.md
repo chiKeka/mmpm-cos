@@ -1,6 +1,6 @@
 # Edmonton Valley Line Southeast LRT — Deep Case Study
 
-**Status**: DRAFT v0 — decision points identified, briefs awaiting construction.
+**Status**: DRAFT v0 — decision points identified, briefs constructed (`briefs/dp1-dp4/brief.md`). Awaiting Council runs.
 
 ## Purpose
 
