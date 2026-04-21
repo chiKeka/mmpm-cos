@@ -79,12 +79,12 @@ The system must prefer explicit, well-grounded judgment — even if awkward or i
 
 ## Architecture
 
-### 4-Layer Agent Architecture (16 Agents)
+### 4-Layer Agent Architecture (17 Agents)
 
 ```
 PROGRAMME COGNITIVE CHAIR (1)
          |
-STRATEGIC DOMAIN INTELLIGENCE (7)
+STRATEGIC DOMAIN INTELLIGENCE (8)
   Organizational Design and Architecture Agent
   Governance, Stakeholder and Institutional Leadership Agent
   Commercial and Contracting Agent
@@ -92,6 +92,7 @@ STRATEGIC DOMAIN INTELLIGENCE (7)
   Strategic Leadership and Performance Agent
   Socio-Technical Impact and Legitimacy Agent
   Futures and Foresight Agent
+  Quantitative Analyst Agent (added 2026-04-21 post-evaluation)
          |
 CROSS-DOMAIN COUPLING INTELLIGENCE (5)
   Interface Integrity Agent
@@ -109,21 +110,29 @@ ADVERSARIAL GOVERNANCE (3)
 ### Orchestration Flow
 
 ```
-1. INTAKE — Chair receives question and programme context
-2. CLASSIFICATION — Chair decomposes question into domain touchpoints, infers parameters
-3. ROUTING — Chair selects agents based on classification and routing rules
-4. DOMAIN ASSESSMENT — Selected domain agents produce structured assessments (parallel)
-5. COUPLING REVIEW — Coupling agents examine cross-domain interactions
-6. CHALLENGE ROUND — Agents may challenge each other's outputs (1 round max)
-7. REBUTTAL ROUND — Challenged agents respond (1 round max)
-8. ADVERSARIAL REVIEW — Contrarian, Red Team, Public Value agents challenge the emerging picture
-9. EVIDENCE QUALITY GATE — Chair audits whether claims match evidence strength
+0.  INTAKE — Chair receives question and programme context
+0.5 PRACTITIONER CONTEXT RETRIEVAL (post-eval) — Chair retrieves matching annotations
+    from memory/practitioner-context/ by programme / sector / jurisdiction / institution
+1.  CLASSIFICATION — Chair decomposes question into domain touchpoints
+2.  PARAMETER INFERENCE — Chair infers parameters, integrating retrieved annotations
+3.  AGENT SELECTION — Chair selects agents based on classification and routing rules
+4.  DOMAIN ASSESSMENT — Selected domain agents produce structured assessments (parallel)
+5.  COUPLING REVIEW — Coupling agents examine cross-domain interactions
+6.  CHALLENGE ROUND — Agents may challenge each other's outputs (1 round max)
+7.  REBUTTAL ROUND — Challenged agents respond (1 round max)
+8.  ADVERSARIAL REVIEW — Contrarian, Red Team, Public Value agents challenge
+9.  EVIDENCE QUALITY GATE — Chair audits whether claims match evidence strength
 10. SYNTHESIS — Chair produces structured output with dissent preserved
+10.5 CHAIR SELF-AUDIT (post-eval) — Chair audits own orchestration (coverage, refusals,
+     Contrarian integration, synthesis honesty, scoping limits)
 11. ESCALATION CHECK — System determines whether human review is required
-12. MEMORY WRITE — Decision log records question, agents, findings, assumptions, dissent, confidence
+12. MEMORY WRITE — Two-part: (a) decision log to memory/decisions/; (b) prediction log
+    to memory/predictions/ for feedback-loop calibration (post-eval)
 ```
 
 If disagreement persists after rebuttal, it is **preserved as unresolved tension** in the synthesis — not iterated further.
+
+The prediction-log write at step 12(b) enables empirical calibration over time: the `/calibrate` command compares predictions to populated outcomes and produces calibration reports that propose adjustments to agent definitions. MMPM-COS is designed to learn from its own predictions, not be a static doctrine layer.
 
 ---
 
@@ -310,16 +319,19 @@ All messages include: sender, recipient, confidence, evidence basis, assumptions
 MMPM Agent/
 ├── CLAUDE.md                          # This file — constitutional core
 ├── .claude/
-│   ├── agents/                        # Agent definitions (16 agents)
-│   └── commands/                      # Skill commands (/council, /tutor, etc.)
+│   ├── agents/                        # Agent definitions (17 agents)
+│   └── commands/                      # Skill commands (/council, /tutor, /calibrate, etc.)
 ├── configs/
-│   ├── constitution/                  # Constitutional principles reference
-│   ├── routing/                       # Routing rules and agent selection logic
+│   ├── constitution/                  # Constitutional principles + Evidence Quality Gate
+│   ├── routing/                       # Routing rules (11 mandatory rules; Council-Lite)
 │   ├── parameters/                    # Parameter schemas and defaults
-│   └── output-contracts/             # Mode-specific output templates
+│   └── output-contracts/             # Mode-specific output templates + synthesis metadata schema
 ├── memory/
-│   ├── decisions/                     # Decision log (episodic memory)
-│   └── practitioner-context/         # User annotations and corrections
+│   ├── decisions/                     # Decision log (episodic memory, write)
+│   ├── practitioner-context/         # Programme/sector/jurisdiction/institution annotations
+│   │                                  # retrieved as primary input (post-eval)
+│   └── predictions/                   # Prediction log + calibration reports (post-eval)
+├── evaluations/                       # Empirical evaluation tree
 └── docs/
     └── source-design/                # Original design documents
 ```

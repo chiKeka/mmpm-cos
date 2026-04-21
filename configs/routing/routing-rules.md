@@ -78,6 +78,7 @@ These cannot be overridden:
 8. **Evidence trigger**: If evidence is mixed or confidence is high → Evidence Quality Gate gets extra scrutiny
 9. **Reference-class trigger** *(added post-eval)*: If the decision has a nameable reference class — either named in the brief or inferable from doctrinal knowledge (major infrastructure types, HSR programmes, P3 transit, airports, digital transformation, etc.) → Risk Agent MUST produce reference-class base-rate framing (cost overrun, schedule slip, demand/benefit shortfall as applicable), AND Evidence Quality Gate MUST check for its presence in synthesis. If a reference class cannot be named at useful specificity, Risk Agent MUST state this explicitly rather than silently omit.
 10. **Financial-model-critique trigger** *(added post-eval)*: If input contains a quantified risk / VfM / BCR / financial-model analysis, Evidence Quality Gate MUST run the Structural Critique routine (see `configs/constitution/evidence-quality-gate.md` §Financial-Model Structural Critique) before synthesis: (a) PERT-mean or point-estimate treatment of heavy-tailed risks; (b) independent-risk assumption vs correlated-distress reality; (c) binary risk allocation without return-of-risk; (d) absent legitimacy / community / public-value pricing.
+11. **Quantitative-computation trigger** *(added post-eval)*: If input contains a quantified risk analysis, VfM, BCR, NPV, cashflow projection, demand forecast, budget envelope, or similar numerical artefact AND the decision turns materially on numerical range estimation, Quantitative Analyst Agent MUST be called. The Risk Agent continues to produce reference-class prose framing; the Quantitative Analyst produces the arithmetic — range estimates, joint-tail stress, sensitivity decomposition, explicit computational provenance.
 
 ### Rationale — post-evaluation additions
 
@@ -129,6 +130,7 @@ Which agents handle which question domains:
 | timing, schedule, cadence, temporal, clock mismatch, urgency, compression | Temporal Dynamics | Risk Agent, Governance Agent |
 | tradeoffs, constraints, competing objectives, optimization, sacrifice | Constraint & Tradeoff | Risk Agent, Leadership Agent |
 | brittleness, nonlinear, tight coupling, dependency, amplification, fragility | Emergence & Fragility | Risk Agent |
+| quantitative, numerical, Monte Carlo, NPV, BCR, VfM, sensitivity, distribution, correlation, base-rate arithmetic | Quantitative Analyst | Risk Agent, Commercial Agent |
 
 ## Escalation Rules
 

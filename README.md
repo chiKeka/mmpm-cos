@@ -41,15 +41,16 @@ Council's 13-section synthesis carries overhead that earns its place on conseque
 
 ## Architecture
 
-### 4-Layer Agent Model (16 Agents)
+### 4-Layer Agent Model (17 Agents)
 
 ```
 LAYER 1 — PROGRAMME COGNITIVE CHAIR
   Orchestrates deliberation. Classifies questions, infers parameters,
-  routes to agents, runs the evidence quality gate, synthesises findings,
-  and preserves dissent.
+  retrieves practitioner context, routes to agents, runs the evidence
+  quality gate, synthesises findings, preserves dissent, and
+  self-audits the orchestration.
 
-LAYER 2 — STRATEGIC DOMAIN INTELLIGENCE (7 Agents)
+LAYER 2 — STRATEGIC DOMAIN INTELLIGENCE (8 Agents)
   Organizational Design and Architecture
   Governance, Stakeholder and Institutional Leadership
   Commercial and Contracting
@@ -57,6 +58,8 @@ LAYER 2 — STRATEGIC DOMAIN INTELLIGENCE (7 Agents)
   Strategic Leadership and Performance
   Socio-Technical Impact and Legitimacy
   Futures and Foresight
+  Quantitative Analyst (post-evaluation addition; grounds prose findings
+    in calibrated numerics where numerical artefacts are present)
 
 LAYER 3 — CROSS-DOMAIN COUPLING INTELLIGENCE (5 Agents)
   Interface Integrity
@@ -74,14 +77,15 @@ LAYER 4 — ADVERSARIAL GOVERNANCE (3 Agents)
 ### Orchestration Flow
 
 ```
- 1. Intake              6. Coupling Review       11. Synthesis
- 2. Classification      7. Challenge Round        12. Memory Write
- 3. Parameter Inference 8. Rebuttal Round
- 4. Agent Selection     9. Adversarial Review
+ 0.5 Practitioner Context Retrieval (post-eval)
+ 1. Intake              6. Coupling Review       10.5 Chair Self-Audit (post-eval)
+ 2. Classification      7. Challenge Round       11. Synthesis
+ 3. Parameter Inference 8. Rebuttal Round        12. Memory Write (decision log
+ 4. Agent Selection     9. Adversarial Review          + prediction log — post-eval)
  5. Domain Assessment  10. Evidence Quality Gate
 ```
 
-Unresolved disagreement is **preserved as tension**, not iterated away.
+Unresolved disagreement is **preserved as tension**, not iterated away. Predictions from every Council run are extracted to `memory/predictions/` for empirical calibration via the periodic `/calibrate` review.
 
 ---
 
@@ -111,11 +115,12 @@ Each agent definition includes specific references to MMPM lecture modules, name
 | `/context` | Setup | Set programme context (sector, politics, constraints) |
 | `/tutor` | Light | Explain MMPM concepts from the lecture curriculum |
 | `/analyst` | Medium | Focused domain analysis (1-3 agents) |
-| `/council` | Full | Multi-agent governance deliberation |
+| `/council` | Full | Multi-agent governance deliberation (14-section output, post-eval) |
 | `/scenario` | Full | Structured "what if" consequence mapping |
 | `/research` | Medium | Academic research framing |
 | `/brief` | Compressed | Board-ready executive summary |
 | `/memory` | Utility | Review past decisions |
+| `/calibrate` | Learning | Compare prediction log against populated outcomes; produce calibration report (post-eval) |
 
 ---
 
@@ -176,16 +181,19 @@ Parameters rated **high** trigger mandatory agent review. Conflicting parameters
 MMPM Agent/
 ├── CLAUDE.md                    # Constitutional core
 ├── .claude/
-│   ├── agents/                  # 16 agent definitions
-│   └── commands/                # 8 slash commands
+│   ├── agents/                  # 17 agent definitions (post-eval: + Quantitative Analyst)
+│   └── commands/                # 9 slash commands (post-eval: + /calibrate)
 ├── configs/
-│   ├── constitution/            # Interaction protocol, memory system
-│   ├── routing/                 # Agent selection logic
+│   ├── constitution/            # Interaction protocol, memory system, evidence quality gate
+│   ├── routing/                 # Agent selection logic (11 mandatory rules + Council-Lite)
 │   ├── parameters/              # Parameter schemas and defaults
-│   └── output-contracts/        # Structured output templates
+│   └── output-contracts/        # Structured output templates + synthesis metadata schema
 ├── memory/
-│   ├── decisions/               # Decision log
-│   └── practitioner-context/    # User annotations
+│   ├── decisions/               # Decision log (write)
+│   ├── practitioner-context/    # Programme / sector / jurisdiction / institution annotations
+│   │                            # (retrieved as primary input, post-eval)
+│   └── predictions/             # Prediction log (post-eval): feeds /calibrate loop
+├── evaluations/                 # Empirical evaluation + findings + methodology
 └── docs/
     └── source-design/           # Original design documents
 ```
