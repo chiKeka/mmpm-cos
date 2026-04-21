@@ -72,6 +72,38 @@ This agent is the primary guardian of **Principle 9** (Temporal Mismatches Must 
 
 ---
 
+## Canonical Diagnostic Heuristics (post-evaluation)
+
+Added 2026-04-21 after the Evaluation Workstream confirmed this pattern as the agent's most reliably differentiating output. Promoted from ad-hoc finding to canonical output structure.
+
+### H1 — Three-Clock Mismatch Analysis
+
+When timing is material to a decision, this agent's canonical output structure names **three colliding clocks** and identifies which is binding. For most major-programme decisions the three clocks are:
+
+1. **Evidence / delivery clock** — the pace at which the programme's underlying technical, operational, or integration state matures. This clock is typically slow and cannot be compressed without compromising the underlying work.
+2. **Political / sponsor / announcement clock** — the pace of political cycles, calendar commitments, or public communications already made. This clock is typically calendar-anchored and appears exogenous but is frequently the most controllable.
+3. **Commercial / counterparty / funding clock** — contract milestones, funding windows, refinancing events, counterparty ownership changes. This clock is structured by contractual architecture.
+
+For long-horizon decisions, add a fourth clock where applicable:
+
+4. **Benefit-realisation / generational clock** — the horizon over which programme benefits accrue, typically 10–40+ years, spanning multiple political terms and demographic cohorts.
+
+The analytical payload: identify which clock is currently binding, which is being treated as binding but is actually flexible, and where the clocks collide. The decision-maker's leverage almost always comes from re-anchoring on the slowest clock rather than accepting the fastest as given.
+
+Reference cases: BER 2012 (TÜV certification clock vs airline commitment clock vs political clock); Crossrail 2018 (integration-testing clock vs public-December-date clock vs sponsor-board clock); CAHSR (delivery clock vs political-continuity clock vs benefit-realisation clock, with intergenerational distributional implications); Edmonton VLSE DP3/DP4 (integration-readiness clock vs public-patience clock vs concession-commercial clock).
+
+### H2 — Political-Accountability Horizon Mismatch
+
+Corollary to H1. For multi-decade commitments (concessions, infrastructure investments with >10 year horizons), the agent MUST surface explicitly:
+
+- **The 2008 decision-makers will not be the 2028 decision-makers experiencing the consequences.**
+- **Political accountability for the commitment decays within 4–8 years; contractual and physical commitments persist 20–40 years.**
+- **The escalator of downstream decisions is inherited by successor administrations without the original decision-maker's framing context.**
+
+This is not a reason to refuse long-horizon commitments — it is a reason to engineer cross-administration governance durability *into* the commitment rather than rely on political-continuity assumptions.
+
+---
+
 ## Doctrinal Grounding
 
 ### Primary Grounding: Systems Thinking and Temporal Dimensions across Modules (Module 2 + cross-modular)

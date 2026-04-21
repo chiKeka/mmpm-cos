@@ -1,6 +1,6 @@
 # Evaluation Methodology
 
-**Status**: DRAFT v0 — awaiting verification before any runs.
+**Status**: v1 — first-pass runs complete (2026-04-20). Revised 2026-04-21 to document methodology-level findings from the first-pass runs. Any subsequent study should incorporate §11 and §12.
 
 ## 1. Research question
 
@@ -157,3 +157,62 @@ All runs executed within a single working session window. Model ID, date, and an
 - **Not a claim of generalization.** N=8 on a curated case list is descriptive, not inferential.
 - **Not a claim that the rubric is the right rubric.** It is one rubric, derived from the system's own constitution. A reader could disagree with the dimensions and the paper would still hold as a descriptive artifact.
 - **Not a claim about human-plus-AI performance.** The comparison is AI-alone under three conditions, not AI-augmented human judgment.
+
+---
+
+## 10. Post-first-pass addenda
+
+The sections below were added 2026-04-21 after the first-pass runs completed and exposed methodology-level issues that any subsequent study must address. Section numbers continue from §9.
+
+## 11. Actor separation requirement (addresses designer-as-scorer confound)
+
+**Finding from first-pass**: the single operator (one Claude session) produced the Council outputs, authored `deep-case/literature-expected.md`, and scored the rubric. Information flowed between these steps — for example, the operator read the BER W1 pilot score before producing HS2/Crossrail/Edmonton/CAHSR Council outputs, which plausibly nudged later Council outputs toward closing the D4 routing gap identified in BER. The W4 30/30 surfacing rate is similarly discounted because the operator authored both the literature-expected list and the Council outputs being scored against it.
+
+**Requirement for any subsequent study**: three distinct actors, with no information flow between them during the study window:
+
+1. **Runner**: produces Council, Vanilla, and Flyvbjerg outputs from briefs. Does not see the rubric dimensions in advance; does not see scoring; does not see `literature-expected.md`. Records outputs verbatim.
+2. **Scorer**: produces scores from outputs against the rubric. Does not produce outputs; does not see the literature-expected list until D2 audit (per §3 ground-truth discipline).
+3. **Methodology author**: authors the rubric, the literature-expected list, and the methodology document. Does not run outputs; does not score. Authorship of these documents must precede the study window.
+
+If three actors are not available, a single-actor protocol is still defensible IF the artifacts are produced in a strictly sequenced order with dated commits and no post-hoc revision: (a) methodology + rubric + literature-expected → (b) runner outputs → (c) scoring. The first-pass of this study did not meet this bar; findings should be weighted accordingly.
+
+## 12. Condition A/B clean-session requirement
+
+**Finding from first-pass**: Conditions A (Vanilla) and B (Flyvbjerg-primed) were run via sub-agents spawned from a Claude Code session with full MMPM-COS constitutional context (CLAUDE.md, configs/, agents/, commands/) in the parent. Mechanical contamination-check per `benchmark/prompts/contamination-check.md` passed on all runs, but residual context-bleed cannot be ruled out.
+
+**Requirement for any subsequent study**: Conditions A and B MUST be run in a Claude session that does NOT have the MMPM-COS project in context. Options:
+
+1. **Claude.ai web session** outside the repo. Paste the system prompt and user message verbatim. Copy the raw output into `benchmark/outputs/{case}/{condition}.md` with no editing.
+2. **Claude API** call from outside the repo with only the specified system prompt. Store response verbatim.
+3. **Claude Code session in an empty directory** with no CLAUDE.md and no project files.
+
+Sub-agent role-isolation (as used in the first-pass) is acceptable ONLY if the three cleaner options are operationally impossible, and must be flagged explicitly in the output file header and in `limitations.md §14`.
+
+## 13. Scoring instrument depth for W2
+
+**Finding from first-pass**: the W2 pilot (4 of 22 concepts) showed Vanilla saturating at 100% concept-surfacing on the selected concepts. The binary scoring schema (`raised_unprompted` / `raised_on_followup` / `missed`) cannot distinguish Council from Vanilla when both surface the concept. For the W2 instrument to produce discriminating data, the schema must augment the binary with depth:
+
+**Revised W2 scoring schema (for subsequent studies)**:
+
+- **Surfacing level** (existing binary): `raised_unprompted` / `raised_on_followup` / `missed`.
+- **Depth rating** (0/1/2, added post-first-pass):
+  - **0** — concept named but mechanism not stated (e.g., "optimism bias" as label without causal explanation)
+  - **1** — concept named with mechanism stated (causal pathway articulated)
+  - **2** — concept named, mechanism stated, AND operationalised into recommendation (the output's action-recommendation is shaped by the concept)
+
+Combined outcome is `{surfacing level, depth rating}`. This allows the instrument to distinguish "Vanilla names the concept but does not act on it" from "Council names the concept, explains the mechanism, and rewrites the recommendation".
+
+Note on applicability: the depth rating adds scorer workload and should not be added mid-study. Apply to subsequent W2 runs, not to the 4 completed in the first-pass slice.
+
+## 14. Sign-off as a hard gate
+
+**Finding from first-pass**: the operator signed off on methodology defaults on the user's behalf (see `SIGN-OFF.md` dated 2026-04-20). Items marked `[?]` — case substitutions, concept list adjustments, rubric dimension confirmations — were deferred. This produced a study that ran without user confirmation of the case list and the concept list, and therefore any post-study user objection to those choices would invalidate the affected runs.
+
+**Requirement for any subsequent study**: `SIGN-OFF.md` is a literal gating mechanism, not advisory:
+
+1. **No runs committed to the benchmark, vignette, or deep-case directories until SIGN-OFF.md has all `[?]` items resolved by the designated user** (typically the designer-scorer, but see §11 — ideally three distinct actors).
+2. **Sign-off is recorded with a git commit** on a branch created for the study; the sign-off commit precedes all run commits.
+3. **Post-signoff scope changes** (substituting a case, swapping a concept, adjusting the rubric) require a new sign-off entry and invalidate any runs affected by the change.
+4. **The sign-off file is the methodological audit trail**. A reviewer should be able to read `SIGN-OFF.md` and identify exactly what was approved, by whom, and when.
+
+This is not bureaucratic — it is the mechanism by which the study can withstand post-hoc challenge on case selection, rubric design, or methodology.

@@ -76,6 +76,40 @@ These cannot be overridden:
 6. **Options trigger**: If multiple competing options exist → Constraint and Tradeoff Agent MUST be called
 7. **Complexity trigger**: If tight coupling or high dependency density is detected → Emergence and Fragility Agent MUST be called
 8. **Evidence trigger**: If evidence is mixed or confidence is high → Evidence Quality Gate gets extra scrutiny
+9. **Reference-class trigger** *(added post-eval)*: If the decision has a nameable reference class — either named in the brief or inferable from doctrinal knowledge (major infrastructure types, HSR programmes, P3 transit, airports, digital transformation, etc.) → Risk Agent MUST produce reference-class base-rate framing (cost overrun, schedule slip, demand/benefit shortfall as applicable), AND Evidence Quality Gate MUST check for its presence in synthesis. If a reference class cannot be named at useful specificity, Risk Agent MUST state this explicitly rather than silently omit.
+10. **Financial-model-critique trigger** *(added post-eval)*: If input contains a quantified risk / VfM / BCR / financial-model analysis, Evidence Quality Gate MUST run the Structural Critique routine (see `configs/constitution/evidence-quality-gate.md` §Financial-Model Structural Critique) before synthesis: (a) PERT-mean or point-estimate treatment of heavy-tailed risks; (b) independent-risk assumption vs correlated-distress reality; (c) binary risk allocation without return-of-risk; (d) absent legitimacy / community / public-value pricing.
+
+### Rationale — post-evaluation additions
+
+Rules 9 and 10 were added following the empirical evaluation (see `evaluations/findings.md` and BER pilot notes). Rule 9 closes a routing gap exposed in the BER W1 pilot where Council's Risk Agent did not naturally invoke reference class even when one was available. Rule 10 formalises the four-point structural critique Council reliably produces against VfM-style analyses (see W3 findings).
+
+## Input-Complexity Routing (Council vs Council-Lite)
+
+Added post-evaluation (see W2 pilot: 13-section format on 200-word vignette inputs produced disproportionate 1,500–2,000 word outputs). The Chair classifies input complexity before agent selection:
+
+### Council-Lite (Analyst mode)
+
+**Trigger**: short input (<400 words), single-domain question, or vignette-class "what's your analysis?" framing where no clear go/no-go decision is on the table.
+
+**Agent set**: Chair + 3–5 relevant agents (domain + at most one coupling + at most one adversarial).
+
+**Output**: condensed synthesis — framing / key findings / recommendation / confidence / unresolved tensions / escalation. No §2 Parameters, §3 Agents Consulted, §5 Cross-Domain, §6 Adversarial Review as separate sections; coupling and adversarial inputs are folded into findings and tensions.
+
+**Target length**: ~500–1500 words.
+
+### Council (full)
+
+**Trigger**: GOVERNANCE_DECISION classification with consequential, multi-domain, or irreversibility characteristics, OR any case where mandatory routing rules 2, 3, or 10 trigger.
+
+**Agent set**: Chair + domain agents + all mandatory-triggered coupling and adversarial agents per rules above.
+
+**Output**: full 13-section Council Brief per `commands/council.md`.
+
+**Target length**: proportionate to input complexity; no word floor; no word ceiling.
+
+### When classification is ambiguous
+
+Default to Council (fuller coverage), but flag in the output that the case could have been handled in Council-Lite and note whether the extra sections earned their place. Over time this produces calibration data on the classification threshold.
 
 ## Agent-to-Domain Mapping
 

@@ -74,6 +74,16 @@ Per concept per condition, the scorer categorizes:
 - `raised_on_followup` — concept surfaced only after a scorer-posed followup question ("what about X-like dynamics here?")
 - `missed` — concept not raised even on followup, OR surfaced but misapplied
 
+### Depth rating (added post-first-pass, 2026-04-21)
+
+The W2 first-pass pilot on 4 concepts showed Vanilla saturating at 100% `raised_unprompted`. Binary surfacing alone does not discriminate Council from Vanilla when both surface the concept. A depth rating is added to distinguish shallow naming from substantive application:
+
+- **0** — concept named but mechanism not stated. E.g., "optimism bias" used as a label without a causal explanation of how it operates in this case.
+- **1** — concept named with mechanism stated. Causal pathway articulated (e.g., "optimism bias: single-point estimates without contingency + advocacy-adjacent forecaster + absent reference class → likely cost understatement").
+- **2** — concept named, mechanism stated, AND operationalised into the recommendation. The output's recommended action is shaped by the concept (e.g., "therefore require reference-class-based cost review before ratification").
+
+Applicability note: the depth rating is added for subsequent W2 runs. The 4 concepts scored in the first-pass slice used binary surfacing only; comparing first-pass scores against depth-rated scores in future runs is not like-for-like.
+
 Recorded in `blind-spots/scoring.csv`:
 
 | Column | Type |
@@ -82,9 +92,10 @@ Recorded in `blind-spots/scoring.csv`:
 | `concept_name` | string |
 | `condition` | `vanilla` / `council` |
 | `outcome` | `raised_unprompted` / `raised_on_followup` / `missed` |
+| `depth` | int 0 / 1 / 2 — populated on subsequent runs; left empty for first-pass rows |
 | `notes` | string |
 
-Analysis produces a 22×2 coverage table and a concept-by-concept delta.
+Analysis produces a 22×2 coverage table, a depth-rating delta table, and concept-by-concept deltas on both surfacing and depth.
 
 ## What this workstream does not claim
 

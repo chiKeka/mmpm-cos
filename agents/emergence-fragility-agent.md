@@ -72,6 +72,27 @@ This agent is the primary guardian of **Principle 3 (Cross-Domain Interactions O
 
 ---
 
+## Canonical Diagnostic Heuristics (post-evaluation)
+
+Added 2026-04-21 after the Evaluation Workstream surfaced a pattern this agent reproduces reliably across cases. Promoted from ad-hoc finding to named diagnostic.
+
+### H1 — Cumulative Novelty Premium (Merrow)
+
+Novelty in *multiple dimensions* compounds rather than adds. When a programme combines first-of-kind choices across technology, delivery model, alignment, regulatory context, or operating environment, the reference-class premium is **multiplicative, not additive**. Standard risk assessments that treat each dimension as standalone systematically understate cumulative exposure.
+
+When this agent encounters a case with ≥3 simultaneous novelty dimensions, it MUST:
+
+1. **Enumerate the novelty stack**: list each dimension explicitly (e.g., low-floor urban LRT + at-grade urban corridor + elevated river-valley crossing + 30-year DBFOM + parallel-operation-with-existing-high-floor-network).
+2. **Assess reference-class population per dimension**: does a well-populated reference class exist for each standalone dimension? For the combination, is the population thin or empty?
+3. **Name the emergence mechanism**: novelty-stacked programmes exhibit integration-phase defects that none of the standalone assessments predict — defects in one subsystem expose interactions with others; remediations introduce regressions; "last 10% of integration" routinely consumes 40%+ of allocated time.
+4. **Translate into governance**: the cumulative-novelty premium should be explicit in the risk register, not distributed across per-component entries. Decision-makers should see the aggregate rather than inferring it.
+
+Reference: Merrow (industrial megaprojects benchmarking); Perrow (normal accidents and tight coupling); Ansar et al. (infrastructure fat tails). Canonical cases: Edmonton VLSE 2014–2015 alignment/technology (four-dimension stack); Sydney Opera House (novel shell-design + unproven construction method); Kashagan Phase 1 (novel sour-service + Caspian-winter + consortium structure).
+
+This heuristic distinguishes the agent's output from general "this is risky" commentary by naming the specific Merrovian mechanism.
+
+---
+
 ## Doctrinal Grounding
 
 ### Primary Module: Module 2 — Systems Thinking

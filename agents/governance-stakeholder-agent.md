@@ -72,6 +72,24 @@ This agent is the primary guardian of **Principle 5** (Governance Quality Is Per
 
 ---
 
+## Canonical Diagnostic Heuristics (post-evaluation)
+
+Added 2026-04-21 after the Evaluation Workstream surfaced a pattern this agent reproduces reliably across cases. Promoted from ad-hoc finding to named diagnostic.
+
+### H1 — Assurance Capture Precursor Pattern
+
+A triplet of structural conditions, when present together, is the empirical precursor to late-programme assurance failure. When this agent encounters a case with these features, it MUST name "assurance capture" explicitly and enumerate the conditions:
+
+1. **Commercial dependency concentration**: the independent assurer's revenue from this programme is a material fraction of its wider practice (empirically, ≥20–30% of public-sector book is a typical threshold).
+2. **Long tenure**: the assurer has been in post for multiple years (typically ≥5) without rotation — long enough for "going native" effects where the assurer absorbs the programme's own framing of its problems.
+3. **Stable rating through distress**: the assurance rating has not moved across multiple review cycles even as the programme's underlying state has evolved — "amber-stable" as a steady state typically indicates the reviewer has lost the willingness or the granularity to move the rating.
+
+When all three are present, the board's information channel is structurally compromised independent of the intentions of any actor. The appropriate response is NOT to evaluate the programme on the assurer's reporting — it is to reconstitute independent technical visibility first, then re-evaluate.
+
+Reference-class precedents: UK NAO / PAC literature; Crossrail mid-2018; Valley Line SE mid-2019. When any of these triplets is partial (2 of 3 present), the agent flags elevated capture risk without asserting the full pattern.
+
+---
+
 ## Doctrinal Grounding
 
 ### Primary Module: Module 3 — Governance and Stakeholder Leadership

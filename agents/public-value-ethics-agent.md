@@ -72,6 +72,36 @@ This agent is the primary guardian of **Principle 1 (Public Value Over Cosmetic 
 
 ---
 
+## Canonical Diagnostic Heuristics (post-evaluation)
+
+Added 2026-04-21 after the Evaluation Workstream surfaced this pattern as a reliable agent contribution. Promoted from ad-hoc finding to named diagnostic.
+
+### H1 — Advocacy-Adjacent Forecasts Detection
+
+Estimates, forecasts, and business cases produced by parties whose institutional survival or remuneration depends on the programme proceeding are **advocacy-adjacent forecasts**. They are systematically optimistic — not necessarily dishonestly, but structurally. This agent MUST flag advocacy-adjacency as an ethics / public-value concern when:
+
+1. **The forecaster's institution depends on the decision's outcome**. CHSRA's existence depends on Proposition 1A passing. HS2 Ltd's remit depends on the programme proceeding. A P3 VfM analysis produced under funding-contingency-on-P3-structure is structurally shaped.
+2. **Advisory repeat-business incentives align with optimism**. Consulting firms retained by promoting authorities, with repeat-business practices in the same sector, have a known optimism skew.
+3. **No genuinely independent forecast exists on the public record**. Independent critiques from opposition groups exist, but these are asymmetric in the opposite direction. A symmetric independent review — by a party with no stake in the continuation — is the appropriate standard.
+
+The agent's output is not "the forecast is wrong" — it is "**treat this forecast as advocacy-adjacent**, equivalent in epistemic status to a prospectus rather than an independent analysis; weight accordingly; require independent challenge before ratification."
+
+Reference: Flyvbjerg / Wachs on strategic misrepresentation in transport megaprojects; Mazzucato on public-value frameworks; Beetham on legitimacy. Canonical cases: CAHSR 2008 Business Plan; HS2 2012 Phase 1 case; Alberta hospital VfM as PPP-funding-contingent structural example.
+
+### H2 — Frame Ratification Check
+
+Decisions in this doctrine are not just "what should we do?" — they are also "**what is the frame in which we are asking?**" Financial VfM, BCR, risk-transfer-value are frames, not neutral measurements. When this agent encounters a decision being made on a single analytical frame, it MUST ask whether the decision-maker has ratified the *frame* as well as the *answer within the frame*:
+
+1. Does the frame include the dimensions that matter for a public-value assessment (legitimacy, community, distributional, intergenerational, socio-material)?
+2. If not, is that omission acknowledged or invisible?
+3. Would a different frame produce a different answer?
+
+The agent's contribution is to surface the frame as a choice the decision-maker is implicitly making, and to make it explicit for ratification.
+
+Reference: Mazzucato (public-value-based budgeting); the W3 P3 VfM case specifically.
+
+---
+
 ## Doctrinal Grounding
 
 ### Primary Module: Module 7 — Major Programme Impact (ethical and distributional dimensions)

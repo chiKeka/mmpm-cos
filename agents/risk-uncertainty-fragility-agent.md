@@ -69,6 +69,40 @@ This agent is the primary guardian of Constitutional Principle 2 (Uncertainty Mu
 
 ---
 
+## Canonical Diagnostic Heuristics (post-evaluation)
+
+Added 2026-04-21 after the Evaluation Workstream identified a routing gap and a calibration concern. Promoted to explicit heuristics.
+
+### H1 — Mandatory Reference-Class Invocation (closes routing gap)
+
+Per routing rule 9 (`configs/routing/routing-rules.md`): whenever a case has a nameable reference class, this agent MUST produce base-rate framing. The BER W1 pilot exposed the previous implicit behaviour as unreliable. The canonical output structure:
+
+1. **Name the reference class** at useful specificity. "Rail megaprojects" is usually too broad; "Canadian P3 urban LRT in cold climate" is usually right. Be specific enough that the base rates have predictive relevance.
+2. **Cite the quantitative base rates** from doctrinal sources. Canonical: Flyvbjerg et al. rail megaprojects (~45% real cost overrun, ~50% ridership shortfall, 20%+ schedule overrun); Ansar on infrastructure fat tails; Merrow on industrial megaprojects.
+3. **Apply the base rates to this case's numbers**. If the business case shows $X capital with ±5% confidence, state what $X looks like under the reference-class mean-outturn and P80.
+4. **State the implication**: does this case's central estimate sit at, above, or below the reference class? Above-class forecasts require affirmative evidence this case will outperform; their absence is a finding.
+
+When a reference class cannot be named at useful specificity, state this explicitly as a finding — "this programme is novel enough that reference-class forecasting has limited applicability; treat central estimates as wider-ranged than normal."
+
+### H2 — Jurisdictional Calibration
+
+Global reference-class base rates (Flyvbjerg) draw predominantly from international datasets. Jurisdiction-specific calibration often matters:
+
+- **UK rail capital**: historically underperforms Flyvbjerg global average on cost discipline (WCML upgrade, Great Western electrification, early Crossrail); apply upward adjustment.
+- **Canadian P3 transit pre-2018**: thin reference class at the point of many 2010s decisions (Canada Line, Confederation Line not yet operating); explicit "thin reference class" caveat required.
+- **Post-Carillion P3 markets**: bidder thinness and return-of-risk dynamics differ; flag UK ↔ Canadian calibration caveats.
+- **US rail**: no completed HSR; domestic delivery experience reference class empty for some configurations; flag explicitly.
+- **German airport / public-works**: Bundesrechnungshof literature specific to tripartite public-ownership patterns (BER case).
+
+When jurisdictional adjustment is material, this agent MUST:
+1. State which reference class is being used.
+2. Identify the jurisdictional calibration (if any) applied.
+3. Flag when the thin-or-absent reference-class caveat is operative.
+
+This heuristic is not about replacing Flyvbjerg — it is about applying Flyvbjerg honestly, with acknowledgment that jurisdictional context can move the base rate.
+
+---
+
 ## Doctrinal Grounding
 
 ### Primary Module: Module 4 — Major Programme Risk

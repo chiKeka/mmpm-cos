@@ -6,7 +6,36 @@ MMPM-COS is a **governed deliberation engine** — not a project management tool
 
 ---
 
-**Empirical evaluation**: [`/evaluations/`](evaluations/) — four-workstream study testing whether Council deliberation surfaces risk dimensions that vanilla and Flyvbjerg-primed baselines miss, with pre-registered rubric and honest limitations. *Status: scaffolded; runs pending verification of methodology.*
+**Empirical evaluation**: [`/evaluations/`](evaluations/) — four-workstream study testing whether Council deliberation surfaces risk dimensions that vanilla and Flyvbjerg-primed baselines miss, with pre-registered rubric and honest limitations. *Status: first-pass runs complete across all four workstreams (5 of 8 W1 cases, 4 of 22 W2 concepts, W3 complete, W4 complete). System improvements listed below were derived from the findings.*
+
+---
+
+## What Council Reliably Adds Over Unprimed Claude
+
+The evaluation surfaced that unprimed Claude (Opus 4.7) is a stronger baseline than the design initially assumed — it produces competent programme-board advice at ~17/20 on a 10-dimension rubric without MMPM priming. Council's reliable differentiation is concentrated in **three structural dimensions** plus **one routing-dependent dimension**:
+
+| Dimension | Where Council differentiates |
+|-----------|------------------------------|
+| **Dissent preservation** (§12 Unresolved Tensions) | Structural — Council surfaces named tensions that unprimed outputs converge away |
+| **Public-value framing** (Public Value + Impact agents) | Structural — distributional, legitimacy, socio-material dimensions reliably surfaced |
+| **Temporal mismatch** (Temporal Dynamics agent) | Structural — multi-clock analysis is Council's most consistent advantage |
+| **Reference-class forecasting** (Risk Agent, mandatory per routing rule 9) | Routing-dependent — closed post-evaluation gap |
+
+Council does **not** reliably differentiate on general judgment quality, single-dimension risk analysis, or scoping/framing where the brief is well-constructed. Users who expect Council to outperform unprimed Claude on every dimension will be disappointed; users who expect it on the four dimensions above will see it consistently.
+
+See [`evaluations/findings.md`](evaluations/) (when complete) and per-workstream findings for the empirical basis.
+
+## What Council Does Not Replace
+
+- **Technical / engineering analysis** beyond governance framing (e.g., signalling integration, structural engineering, actuarial modelling).
+- **Legal / contract interpretation** of specific contract provisions or jurisdictional law.
+- **Quantitative financial modelling** — Council critiques financial models structurally (per the Evidence Quality Gate routine) but does not reproduce them.
+
+In cases where the dominant analytical question sits outside MMPM-COS routing destinations, Council's appropriate response is to **reframe to "require independent specialist review"** and explicitly acknowledge the scoping limit. This is a feature, not a shortcoming.
+
+## Verbosity Note
+
+Council's 13-section synthesis carries overhead that earns its place on consequential, multi-domain governance decisions and does not when the input is simple. Raw scores favour Council (~20/20); normalised per-100-word scores favour unprimed Claude (~1.3) over Council (~0.5). The `/analyst` command or the post-evaluation **Council-Lite** routing (see `configs/routing/routing-rules.md` §Input-Complexity Routing) produces proportionate outputs on short or single-domain inputs.
 
 ---
 
@@ -111,7 +140,7 @@ Each agent definition includes specific references to MMPM lecture modules, name
 
 ## Mandatory Routing Rules
 
-| Condition | Required Agent |
+| Condition | Required Agent / Routine |
 |---|---|
 | >1 domain agent active | Interface Integrity |
 | Consequential decision | Contrarian |
@@ -120,6 +149,10 @@ Each agent definition includes specific references to MMPM lecture modules, name
 | Timing is central | Temporal Dynamics |
 | Competing options | Constraint and Tradeoff |
 | Tight coupling detected | Emergence and Fragility |
+| **Nameable reference class** *(post-eval)* | Risk Agent (mandatory base-rate framing) |
+| **Financial-model input** *(post-eval)* | Evidence Quality Gate structural-critique routine |
+
+See [`configs/routing/routing-rules.md`](configs/routing/routing-rules.md) for full text. Post-evaluation additions (rules 9 and 10) close gaps identified in the BER pilot and the W3 PERT-mean case.
 
 ---
 

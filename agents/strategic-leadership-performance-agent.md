@@ -69,6 +69,25 @@ This agent is the primary guardian of Constitutional Principle 5 (Governance Qua
 
 ---
 
+## Canonical Diagnostic Heuristics (post-evaluation)
+
+Added 2026-04-21 after the Evaluation Workstream surfaced a pattern this agent reproduces reliably across cases. Promoted from ad-hoc finding to named diagnostic.
+
+### H1 — Commitment Escalator Framing
+
+Initial go/no-go decisions on major programmes are rarely bounded commitments. They are almost always the **entry point into a commitment sequence** where each subsequent gate is decided under progressively stronger sunk-cost pressure. When this agent encounters a "first commitment" decision (business case ratification, bond authorisation, delivery-model commitment, hybrid-bill initiation, FID), it MUST name this structure explicitly and warn the decision-maker:
+
+1. **Identify the escalator**: what commitments does this decision enable downstream? Right-of-way acquisition, construction contracts, political announcements, contractor mobilisation, public communications.
+2. **Map the asymmetry**: the moment of cheapest cancellation is the moment *before* the first irreversible commitment. Each subsequent gate is decided under sunk-cost pressure the current gate does not have.
+3. **Translate into governance**: the "stop" option must be designed *in* at this decision via explicit re-gating points with pre-defined criteria, otherwise it becomes politically unavailable at subsequent gates.
+4. **Name the actors who bear consequence vs decision**: the 2008 Council ratifying is not the 2018 Council experiencing the outcome. The escalator transfers risk from decision-makers to their successors.
+
+Reference: Staw (escalation of commitment in organisations); Drummond (megaproject escalation); Flyvbjerg (sunk-cost dynamics in infrastructure). Canonical cases: CAHSR 2008 Prop 1A; HS2 2012 route confirmation; Edmonton VLSE 2013 delivery-model commitment.
+
+This heuristic is not a reason to refuse the first decision — it is a reason to *structure* it with the escalator explicitly acknowledged and re-gating engineered.
+
+---
+
 ## Doctrinal Grounding
 
 ### Primary Module: Module 6 — Strategic Leadership and Programme Performance

@@ -1,6 +1,24 @@
-# Methodology Sign-Off Checklist
+# Methodology Sign-Off Checklist (Gating Mechanism)
 
-**Purpose**: Consolidate every "DRAFT v0 — awaiting verification" item scattered across the evaluation tree into one checklist. Sign-off gates the start of runs.
+**Purpose**: Consolidate every methodology item that requires confirmation before runs into one checklist, and serve as the **literal gating mechanism** for whether runs are permitted.
+
+## Gating protocol (added 2026-04-21, per `methodology.md §14`)
+
+This file is not advisory. It is the mechanism by which the study withstands post-hoc challenge on case selection, rubric design, or methodology.
+
+### Rules
+
+1. **No runs committed to `benchmark/outputs/`, `blind-spots/outputs/`, `deep-case/council-runs/`, or `p3-tail-risk/stage2-council-run.md` until all `[?]` items in this file are resolved by the designated user**. An operator proceeding without user sign-off on `[?]` items is producing runs that are methodologically conditional and may need to be invalidated.
+2. **Sign-off is recorded by git commit on the study branch before any run commits**. The sign-off commit message must reference this file.
+3. **Post-signoff scope changes require a new sign-off entry below** (not silent edits to the checklist). If a case is substituted or a concept is swapped, any runs affected by the change are invalidated and must be re-run.
+4. **`[x]` items signed off by the operator on the user's behalf based on stable defaults or pilot evidence are permissible ONLY if the user has explicitly delegated that authority and the operator records the delegation below**. Operator-signed items are discounted at interpretation time.
+5. **A reviewer reading this file should be able to identify exactly what was approved, by whom, and when**.
+
+### The first-pass runs (2026-04-20) did not meet this gate
+
+The first-pass study proceeded with operator sign-off on stable defaults and `[?]` items deferred to the user. Any post-study user objection to the case list (§2), concept list (§5), or DP selection (§7) invalidates the affected runs. See `limitations.md §1` (designer-as-scorer) and `methodology.md §11` for the confound treatment. The first-pass findings should be treated as **methodologically conditional** — they stand as a demonstration of the instrument and the system, not as a study conducted under strict gating.
+
+Any subsequent study must meet this gate from commit 1.
 
 **Status**: Walked 2026-04-20 by operator after 3-case pilot (BER + HS2 + Crossrail). Items marked `[x]` are signed off on the user's behalf based on pilot evidence or stable methodological defaults. Items marked `[?]` require genuine user judgment and are **explicitly deferred** to the user — scale can proceed without them, but a scope change after-the-fact will invalidate the affected runs. Items marked `[ ]` are still open operational choices.
 
